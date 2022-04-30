@@ -1,0 +1,82 @@
+{
+    "python.jediEnabled": true,
+    "python.globalModuleInstallation": true,
+
+    
+    "files.insertFinalNewline": true,
+    //
+    // Python > Formatting: Provider
+    // Provider for formatting. Possible options include 'autopep8', 'black', and 'yapf'.
+    "python.formatting.provider": "black",
+    //
+    // Extensión multi-command
+    "multiCommand.commands": [
+        {
+            "command": "multiCommand.clearTerminal",
+            "sequence": [
+                {
+                    "command": "workbench.action.terminal.sendSequence",
+                    "args": {
+                        "text": "clear\u000D"
+                    }
+                },
+                "workbench.action.focusActiveEditorGroup",
+            ],
+        },
+        {
+            "command": "multiCommand.pythonExecuteInTerminal",
+            "sequence": [
+                "workbench.action.terminal.focus",
+                {
+                    "command": "workbench.action.terminal.sendSequence",
+                    "args": {
+                        "text": "cd '${fileDirname}'\u000Dclear\u000Dpy '${fileBasename}'\u000D"
+                    }
+                },
+                "workbench.action.focusActiveEditorGroup",
+            ],
+        },
+        {
+            "command": "multiCommand.pythonExecuteAndFocusInTerminal",
+            "sequence": [
+                "workbench.action.terminal.focus",
+                {
+                    "command": "workbench.action.terminal.sendSequence",
+                    "args": {
+                        "text": "cd '${fileDirname}'\u000Dclear\u000Dpy '${fileBasename}'\u000D"
+                    }
+                },
+            ],
+        },
+        {
+            "command": "multiCommand.pythonMptcInTerminal",
+            "sequence": [
+                "workbench.action.terminal.focus",
+                {
+                    "command": "workbench.action.terminal.sendSequence",
+                    "args": {
+                        "text": "cd '${fileDirname}'\u000Dclear\u000Dmptc '${fileBasename}' "
+                    }
+                },
+            ],
+        },
+    ],
+    //
+    // Extensión pylint
+    "python.linting.pylintArgs": [
+        "--extension-pkg-whitelist=pygame",
+        "--disable=C0103, C0114, C0115, C0116, C0301, C0302, C0330",
+        // Pylint features. Pylint global options and switches
+        // http://pylint.pycqa.org/en/2.4/technical_reference/features.html
+        // http://pylint.pycqa.org/en/latest/technical_reference/features.html
+        // C0103: invalid-name - Used when the name doesn't conform to naming rules associated to its type (constant, variable, class...).
+        // C0114: missing-module-docstring - Used when a module has no docstring.Empty modules do not require a docstring.
+        // C0115: missing-class-docstring - Used when a class has no docstring.Even an empty class must have a docstring.
+        // C0116: missing-function-docstring - Used when a function or method has no docstring.Some special methods like __init__ do not require a docstring.
+        // C0301: line-too-long
+        // C0302: too-many-lines
+        // C0330: bad-continuation - Wrong %s indentation%s%s. TODO
+    ],
+    //
+    //
+}
