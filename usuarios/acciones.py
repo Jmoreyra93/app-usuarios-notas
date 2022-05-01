@@ -1,4 +1,4 @@
-import usuarios.usuario as modelo
+import usuarios.usuarios as modelo
 import notas.acciones
 
 

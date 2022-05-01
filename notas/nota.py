@@ -32,7 +32,7 @@ class Nota:
 
     
     def eliminar(self):
-        sql = "DELETE FROM notas WHERE usuario_id = {self.usuario_id} AND titulo LIKE '%{self.titulo}%' "
+        sql = f"DELETE FROM notas WHERE usuario_id = {self.usuario_id} AND titulo LIKE '%{self.titulo}%' "
 
         cursor.execute(sql)
         database.commit()
